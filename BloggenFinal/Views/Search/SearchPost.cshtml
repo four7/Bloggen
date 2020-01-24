@@ -1,0 +1,49 @@
+﻿@model List<BloggenFinal.Models.BloggProp>
+@{
+    ViewData["Search"] = "Search Page";
+}
+
+    <div class="container">
+        <br />
+        <table class="table">
+            <thead class="thead-dark">
+                <tr class="textfix">
+                    <th scope="col" width="10%">#</th>
+                    <th scope="col" width="60%">Titel</th>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Kategori</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @item.Title
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @item.Post
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @item.Date
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            }
+            </table>
+    </div>

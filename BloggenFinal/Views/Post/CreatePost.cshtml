@@ -1,0 +1,40 @@
+﻿@model BloggenFinal.ViewModel.CategoryViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    DateTime timeNow = DateTime.Now;
+    ViewBag.CurrentTime = timeNow;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Välkommen.</h1>
+    <form asp-controller="Post" asp-action="CreatePost" method="post">
+        <div>
+            <label class="textfix" style="float:left">Categorier:&nbsp;</label>
+            <select style="float:left" asp-for=@Model.bloggen.CategoryDescription asp-items="@(new SelectList(Model.kategorier, "Id", "CategoryDescription"))">
+            </select>
+        </div>
+        <br />
+        <div>
+            <br />
+            <label class="textfix" style="float:left">Titel:</label>
+            <input class="titleInput" type="text" asp-for=@Model.bloggen.Title />
+            <span class="text-danger" style="float:left;" asp-validation-for="bloggen.Title"></span>
+        </div>
+        <br />
+        <div>
+            <label class="textfix">Skriv inlägg:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" asp-for=@Model.bloggen.Post></textarea>
+            <span class="text-danger" style="float:left;" asp-validation-for="bloggen.Post"></span>
+        </div>
+        <br />
+        <div>
+            <label asp-for=@Model.bloggen.Date>@ViewBag.CurrentTime</label>
+            <input type="submit" value="Spara inlägg" />
+            <br />
+            <p class="textfix">@TempData["message"]</p>
+        </div>
+    </form>
+</div>
+
