@@ -31,12 +31,6 @@ namespace BloggenFinal.Models
         {
             modelBuilder.Entity<BloggProp>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
-
-                entity.Property(e => e.CategoryDescription)
-                    .IsRequired()
-                    .HasMaxLength(10);
-
                 entity.Property(e => e.Date).HasColumnType("smalldatetime");
 
                 entity.Property(e => e.Post)
@@ -46,12 +40,16 @@ namespace BloggenFinal.Models
                 entity.Property(e => e.Title)
                     .IsRequired()
                     .HasMaxLength(50);
+
+                entity.HasOne(d => d.Category)
+                    .WithMany(p => p.BloggProp)
+                    .HasForeignKey(d => d.CategoryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_BloggProp_Categories1");
             });
 
             modelBuilder.Entity<Categories>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.CategoryDescription)
                     .IsRequired()
                     .HasMaxLength(10);

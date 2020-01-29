@@ -11,11 +11,14 @@ namespace BloggenFinal.ViewModel
         public BloggProp bloggen { get; set; }
         public List<Categories> kategorier { get; set; }
         public Categories cats { get; set; }
+        public List<BloggProp> filterLista { get; set; }
+        
         public CategoryViewModel()
         {
             bloggen = new BloggProp();
             kategorier = new List<Categories>();
             cats = new Categories();
+            filterLista = new List<BloggProp>();
         }
 
     }

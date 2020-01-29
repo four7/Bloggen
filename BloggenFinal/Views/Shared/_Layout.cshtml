@@ -9,28 +9,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BloggenFinal</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/coreStyle.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a3dac3e3db.js" crossorigin="anonymous"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Bloggen!</a>
+<body style="background-color:#1C2A48;">
+    <header style="background-color:#16223A;">
+        <nav class="navbar navbar-default navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color:#16223A;">
+            <div class="container text-light" style="background-color:#16223A;">
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">Bloggen!</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" style="color:#b8cccd">
                     <ul class="navbar-nav flex-grow-1 list-group-flush">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Hem</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Hem</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="CreatePost">Skapa inlägg</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Post" asp-action="CreatePost">Skapa inlägg</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Search" asp-action="SearchPost">Sök inlägg</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Search" asp-action="SearchPost">Sök inlägg</a>
                         </li>
                     </ul>
                 </div>
@@ -40,13 +45,15 @@
     <div class="container">
         
         <main role="main" class="pb-3">
+            
             @RenderBody()
+            <br />
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - I.P Bloggen - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted blue text-center" style="background-color:#16223A">
+        <div class="container blue">
+            &copy; 2020 - I.P Bloggen -<a href="https://github.com/four7" class="btn-floating btn-lg btn-git" type="button" role="button" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

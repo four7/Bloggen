@@ -22,6 +22,9 @@ namespace BloggenFinal.Controllers
         public IActionResult CreatePost()
         {
             var list = _context.Categories.ToList();
+            //Categories extra = new Categories();
+            //extra.CategoryDescription = "ingen";
+            //list.Add(extra);
 
             CategoryViewModel modde = new CategoryViewModel();
             modde.kategorier = list;
@@ -31,6 +34,7 @@ namespace BloggenFinal.Controllers
         
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CreatePost(CategoryViewModel titel)
         {
             if(ModelState.IsValid)

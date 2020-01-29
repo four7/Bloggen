@@ -1,0 +1,33 @@
+﻿@model BloggenFinal.ViewModel.CategoryViewModel
+@{
+    ViewData["Show"] = "Show blogg post";
+}
+
+@foreach (var item in Model.cats.BloggProp)
+{
+    <div class="post-body p-2 container justify-content-center" style="text-align:center">
+        <div class="post-meta" style="display: inline-block;">
+            <div class="row" style="display: inline-block;">
+
+                <!--Heading-->
+                <div class="display-4 text-light">
+                    <h2>@item.Title</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <!--Posted date-->
+                <div class="posted-date text-light">
+                    <hr style="background-color:white;" width="500px">
+                    <p><small><em>@item.Date</em></small></p>
+                    <hr style="background-color:white;">
+                </div>
+            </div>
+        </div>
+
+        <!--Short Description-->
+        <div class="post-body text-light">
+            @item.Post
+        </div>
+    </div>
+}

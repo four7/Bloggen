@@ -1,49 +1,60 @@
-﻿@model List<BloggenFinal.Models.BloggProp>
+﻿@model BloggenFinal.ViewModel.CategoryViewModel
 @{
     ViewData["Search"] = "Search Page";
+    var bloggcount = 0;
 }
 
     <div class="container">
+        <h1 class="display-4 text-center text-light">Sök inlägg.</h1>
         <br />
-        <table class="table">
+        <br />
+        <form asp-controller="Search" asp-action="SearchPost" method="post">
+            <div>
+                <label class="textfix text-light" style="float:left;position:relative;top:5px;">Categorier:&nbsp;</label>
+                <select style="float:left;position:relative;top:5px;" asp-for=@Model.bloggen.CategoryId asp-items="@(new SelectList(Model.kategorier, "Id", "CategoryDescription"))">
+                    <option>ingen</option>
+                </select>
+
+                <label style="position:relative;top:5px;float:left" class="textfix text-light">&nbsp;&nbsp;Titel:&nbsp;&nbsp;</label>
+                <input class="titleInput" placeholder="sök inlägg..." style="width:40%" id="titelbox" type="text" asp-for=@Model.bloggen.Title />
+
+                <input style="position:relative;left:640px;bottom:35px;" type="submit" value="Sök inlägg" asp-for="@Model.bloggen.Title" />
+
+            </div>
+        </form>
+        
+        <table class="table table-sm table-hover">
             <thead class="thead-dark">
-                <tr class="textfix">
-                    <th scope="col" width="10%">#</th>
-                    <th scope="col" width="60%">Titel</th>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Kategori</th>
+                <tr class="textfix text-light">
+                    <th class="text-light" scope="col" width="10%">#</th>
+                    <th class="text-light" scope="col">Titel</th>
+                    <th class="text-light" scope="col">Datum</th>
+                    <th class="text-light" scope="col">Kategori</th>
                 </tr>
             </thead>
-            @foreach (var item in Model)
+            @foreach (var item in Model.cats.BloggProp)
             {
-                <tr>
+                bloggcount++;
+                <tr class="text-light">
                     <td>
-                        @item.Id
+                        @bloggcount
                     </td>
-                </tr>
-                <tr>
                     <td>
                         @item.Title
+                        <a  style="display: block; width: 200px; text-align: right;">@Html.ActionLink("Visa Inlägg", "ShowPost", "ShowPost", new { Id = item.Id }, null)</a>
                     </td>
-                </tr>
-                <tr>
-                    <td>
-                        @item.Post
-                    </td>
-                </tr>
-                <tr>
                     <td>
                         @item.Date
                     </td>
-                </tr>
-                <tr>
                     <td>
-                        
+                        @Model.kategorier[item.CategoryId - 1].CategoryDescription
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                </tr>
             }
-            </table>
+        </table>
     </div>
+<script>
+    $('.ids').click(function() {
+    var Id = $(this).data('id');
+});
+</script>
